@@ -1199,7 +1199,7 @@ wrUIsingle <- function(title, ganalytics, bootswatch = NULL) {
   }
   glue::glue('### Start server code \n',
              'shinyUI(fluidPage( \n',
-             if (is.null(bootswatch)) '' else 'theme = bslib::bs_theme(bootswatch = "{bootswatch}")\n',
+             if (is.null(bootswatch)) '' else 'theme = bslib::bs_theme(bootswatch = "{bootswatch}"),\n',
              '### HTML formatting of error messages \n',
              '{ga} \n',
              'tags$head(tags$style(HTML(".shiny-output-error-validation {{color: red; font-weight: bold;}}"))), \n',
