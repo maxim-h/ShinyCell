@@ -50,7 +50,8 @@
 makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
                                 shiny.prefix, shiny.headers, shiny.dir,
                                 enableSubset = TRUE, defPtSiz = 1.25,
-                                ganalytics = NA){
+                                ganalytics = NA,
+                                bootswatch = NULL){
   ### Checks
   if(length(shiny.prefix) != length(shiny.headers)){
     stop("length of shiny.prefix and shiny.headers does not match!")
@@ -85,7 +86,7 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
     for(i in shiny.prefix){
       readr::write_file(wrUIload(i), append = TRUE, file = fname)
     }
-    readr::write_file(wrUIsingle(shiny.title, ganalytics), append = TRUE, file = fname)
+    readr::write_file(wrUIsingle(shiny.title, ganalytics, bootswatch = bootswatch), append = TRUE, file = fname)
     for(i in seq_along(shiny.prefix)){
       hhh = shiny.headers[i]
       readr::write_file(glue::glue('navbarMenu("{hhh}",'),

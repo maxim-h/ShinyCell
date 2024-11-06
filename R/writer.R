@@ -1191,7 +1191,7 @@ wrUIload <- function(prefix) {
 #' @rdname wrUIsingle
 #' @export wrUIsingle
 #'
-wrUIsingle <- function(title, ganalytics) {
+wrUIsingle <- function(title, ganalytics, bootswatch = NULL) {
   if(!is.na(ganalytics)){
     ga = 'tags$head(includeHTML(("google-analytics.html"))),'
   } else {
@@ -1199,6 +1199,7 @@ wrUIsingle <- function(title, ganalytics) {
   }
   glue::glue('### Start server code \n',
              'shinyUI(fluidPage( \n',
+             if (is.null(bootswatch)) '' else 'theme = bslib::bs_theme(bootswatch = "{bootswatch}")\n',
              '### HTML formatting of error messages \n',
              '{ga} \n',
              'tags$head(tags$style(HTML(".shiny-output-error-validation {{color: red; font-weight: bold;}}"))), \n',
