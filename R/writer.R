@@ -15,7 +15,7 @@ wrLib <- function(lib) {
 
 #' Write code for loading objects for server.R
 #'
-#' @param prefix file prefix 
+#' @param prefix file prefix
 #'
 #' @rdname wrSVload
 #' @export wrSVload
@@ -157,7 +157,7 @@ wrSVfix <- function() {
              '}} \n',
              ' \n',
              'scDRnum <- function(inpConf, inpMeta, inp1, inp2, inpsub1, inpsub2, \n',
-             '                    inpH5, inpGene, inpsplt){{ \n', 
+             '                    inpH5, inpGene, inpsplt){{ \n',
              '  if(is.null(inpsub1)){{inpsub1 = inpConf$UI[1]}} \n',
              '  # Prepare ggData \n',
              '  ggData = inpMeta[, c(inpConf[UI == inp1]$ID, inpConf[UI == inpsub1]$ID), \n',
@@ -170,12 +170,12 @@ wrSVfix <- function() {
              '  h5file$close_all() \n',
              '  if(length(inpsub2) != 0 & length(inpsub2) != nlevels(ggData$sub)){{ \n',
              '    ggData = ggData[sub %in% inpsub2] \n',
-             '  }} \n', 
+             '  }} \n',
              '  \n',
              '  # Split inp1 if necessary \n',
              '  if(is.na(inpConf[UI == inp1]$fCL)){{ \n',
-             '    if(inpsplt == "Quartile"){{nBk = 4}} \n', 
-             '    if(inpsplt == "Decile"){{nBk = 10}} \n', 
+             '    if(inpsplt == "Quartile"){{nBk = 4}} \n',
+             '    if(inpsplt == "Decile"){{nBk = 10}} \n',
              '    ggData$group = cut(ggData$group, breaks = nBk) \n',
              '  }} \n',
              '  \n',
@@ -399,7 +399,7 @@ wrSVfix <- function() {
              ' \n',
              '# Plot violin / boxplot \n',
              'scVioBox <- function(inpConf, inpMeta, inp1, inp2, \n',
-             '                     inpsub1, inpsub2, inpH5, inpGene, \n',     
+             '                     inpsub1, inpsub2, inpH5, inpGene, \n',
              '                     inptyp, inppts, inpsiz, inpfsz){{ \n',
              '  if(is.null(inpsub1)){{inpsub1 = inpConf$UI[1]}} \n',
              '  # Prepare ggData \n',
@@ -648,13 +648,13 @@ wrSVfix <- function() {
 
 #' Write code for main block of server.R
 #'
-#' @param prefix file prefix 
+#' @param prefix file prefix
 #'
 #' @rdname wrSVmain
 #' @export wrSVmain
 #'
 wrSVmain <- function(prefix, subst = "") {
-  glue::glue('optCrt="{{ option_create: function(data,escape) {{return(\'<div class=\\"create\\"><strong>\' + \'</strong></div>\');}} }}" \n', 
+  glue::glue('optCrt="{{ option_create: function(data,escape) {{return(\'<div class=\\"create\\"><strong>\' + \'</strong></div>\');}} }}" \n',
              '  updateSelectizeInput(session, "{prefix}a1inp2", choices = names({prefix}gene), server = TRUE, \n',
              '                       selected = {prefix}def$gene1, options = list( \n',
              '                         maxOptions = 7, create = TRUE, persist = TRUE, render = I(optCrt))) \n',
@@ -1048,7 +1048,7 @@ wrSVmain <- function(prefix, subst = "") {
              '                      input${prefix}c1siz, input${prefix}c1fsz) ) \n',
              '  }}) \n',
              '     \n',
-             '   \n', 
+             '   \n',
              '### Plots for tab c2 \n',
              '{subst}  output${prefix}c2sub1.ui <- renderUI({{ \n',
              '{subst}    sub = strsplit({prefix}conf[UI == input${prefix}c2sub1]$fID, "\\\\|")[[1]] \n',
@@ -1092,7 +1092,7 @@ wrSVmain <- function(prefix, subst = "") {
              '                  input${prefix}c2typ, input${prefix}c2flp, input${prefix}c2fsz) ) \n',
              '  }}) \n',
              '     \n',
-             '   \n', 
+             '   \n',
              '  ### Plots for tab d1 \n',
              '{subst}  output${prefix}d1sub1.ui <- renderUI({{ \n',
              '{subst}    sub = strsplit({prefix}conf[UI == input${prefix}d1sub1]$fID, "\\\\|")[[1]] \n',
@@ -1172,7 +1172,7 @@ wrSVend <- function() {
 
 #' Write code for loading objects for ui.R
 #'
-#' @param prefix file prefix 
+#' @param prefix file prefix
 #'
 #' @rdname wrUIload
 #' @export wrUIload
@@ -1214,7 +1214,7 @@ wrUIsingle <- function(title, ganalytics) {
 
 #' Write code for main block of ui.R
 #'
-#' @param prefix file prefix 
+#' @param prefix file prefix
 #'
 #' @rdname wrUImain
 #' @export wrUImain
@@ -1825,8 +1825,8 @@ wrUImain <- function(prefix, subst = "", ptsiz = "1.25") {
              '                  choices = {prefix}conf[grp == TRUE]$UI, \n',
              '                  selected = {prefix}def$grp1) %>%  \n',
              '        helper(type = "inline", size = "m", fade = TRUE, \n',
-             '               title = "Cell information to group / colour cells by", \n', 
-             '               content = c("Select categorical cell information to group / colour cells by", \n',  
+             '               title = "Cell information to group / colour cells by", \n',
+             '               content = c("Select categorical cell information to group / colour cells by", \n',
              '                           "- Proportion / cell numbers are shown in different colours")), \n',
              '      radioButtons("{prefix}c2typ", "Plot value:", \n',
              '                   choices = c("Proportion", "CellNumbers"), \n',
@@ -1864,7 +1864,7 @@ wrUImain <- function(prefix, subst = "", ptsiz = "1.25") {
              '    )  # End of column (6 space) \n',
              '  )    # End of fluidRow (4 space) \n',
              '),     # End of tab (2 space) \n',
-             ' \n',             
+             ' \n',
              '  ### Tab1.d1: Multiple gene expr \n',
              '  tabPanel( \n',
              '    HTML("Bubbleplot / Heatmap"), \n',
@@ -1944,7 +1944,7 @@ wrUImain <- function(prefix, subst = "", ptsiz = "1.25") {
 #' Write code for final portion of ui.R
 #'
 #' @param footnote shiny app footnote
-#' 
+#'
 #' @rdname wrUIend
 #' @export wrUIend
 #'
@@ -1959,20 +1959,20 @@ wrUIend <- function(footnote) {
     if(!is.null(footnote$year)){   f6 = paste0('"(',footnote$year,') ",')}
     if(!is.null(footnote$doi)){    f7 = paste0('"doi: ',footnote$doi,' ",')}
     if(!is.null(footnote$link)){   f8 = paste0('a("[Link]", href = "',footnote$link,'", target="_blank"),')}
-    f0 = paste0('strong("Reference: "),', f1, f2, f3, f4, f5, f6, f7, f8, 
+    f0 = paste0('strong("Reference: "),', f1, f2, f3, f4, f5, f6, f7, f8,
                 'style = "font-size: 125%;"')
   } else {
     f0 = paste0('"', footnote[[1]], '", style = "font-size: 125%;"')
   }
-  
+
   glue::glue('   \n',
              '   \n',
              'br(), \n',
              'p({f0}), \n',
-             'p(em("This webpage was made using "), a("ShinyCell", \n', 
+             'p(em("This webpage was made using "), a("ShinyCell", \n',
              '  href = "https://github.com/SGDDNB/ShinyCell",target="_blank")), \n',
              'br(),br(),br(),br(),br() \n',
-             '))) \n',
+             ')) \n',
              ' \n',
              ' \n',
              ' \n',
@@ -1982,7 +1982,7 @@ wrUIend <- function(footnote) {
 #' Write code for google-analytics.html
 #'
 #' @param gaID Google analytics tracking ID (e.g. "UA-123456789-0")
-#' 
+#'
 #' @rdname wrUIga
 #' @export wrUIga
 #'
